@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
   var userQuery = "" {
            didSet{
-               APIClient.getCountries(for: "https://restcountries.eu/rest/v2/name/united") { [weak self] (result) in
+               APIClient.getCountries(for: "https://restcountries.eu/rest/v2/name/\(userQuery)") { [weak self] (result) in
                    switch result {
                    case .failure(let appError):
                        DispatchQueue.main.async {
@@ -102,7 +102,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 20, left: 0, bottom: 5, right: 0)
     }
-    
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
