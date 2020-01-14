@@ -25,21 +25,20 @@ class DetailViewController: UIViewController {
     
     func setUp() {
         guard let x = countryData else {
-            showAlert(title: "No data", message: "did not pass data on segue")
+            showAlert(title: "No data", message: "cant set up detail")
             return
         }
         let imageURL = "https://www.countryflags.io/\(x.alpha2Code)/flat/64.png"
         
-        
         countryNameLabel.text = x.name
-        capitalOutlet.text = x.capital
-        populationOutlet.text = x.population.description
+        capitalOutlet.text = "Capital: \(x.capital)"
+        populationOutlet.text = "Population: \(x.population.description)"
         countryFlagImage.getImages(image: imageURL) { [weak self] (result) in
             switch result {
             case .failure(let appError):
                 DispatchQueue.main.async {
                     self?.showAlert(title: "Image Error", message: "No image available \(appError)")
-                    self?.countryFlagImage.image = UIImage(named: "i-cant-see-shit-captain")
+                    self?.countryFlagImage.image = UIImage(named: "uhoh")
                 }
             case .success(let imageURL):
                 DispatchQueue.main.async {

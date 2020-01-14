@@ -17,8 +17,8 @@ class CountryCollectionViewCell: UICollectionViewCell {
     
     func setUpCell(eachCell: Country) {
         countryName.text = eachCell.name
-        countryCap.text = "Capital \(eachCell.capital)"
-        countryPopulation.text = "Population \(eachCell.population)"
+        countryCap.text = "Cap: \(eachCell.capital)"
+        countryPopulation.text = "Pop: \(eachCell.population)"
         countryImage.getImages(image: "https://www.countryflags.io/\(eachCell.alpha2Code)/flat/64.png") { [weak self] (result) in
             switch result{
             case .failure(let appError):
